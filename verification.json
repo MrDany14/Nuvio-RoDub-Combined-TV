@@ -1,21 +1,24 @@
 {
-  "verifiedAt": "2026-10-21T09:09:09.562Z",
-  "pluginVersion": 2,
-  "hostedVersion": "0.5.0",
-  "unitTestsPassed": 24,
+  "verifiedAt": "2026-10-21T10:51:27.242Z",
+  "pluginVersion": 3,
+  "hostedVersion": "0.8.0",
+  "nodeTestsPassed": 46,
   "nativePolicyTests": "passed",
+  "nativeWaitTests": "passed",
+  "packageBytes": 65756,
+  "packageSha256": "9cfd7db8e8036f644c51a5c072c32a41705fa4342e944ca148a1a4b381cfa55e",
   "backend": [
     {
       "endpoint": "stream",
       "status": 200,
       "count": 3,
-      "elapsedMs": 13535
+      "elapsedMs": 4073
     },
     {
       "endpoint": "tvstream",
       "status": 200,
       "count": 3,
-      "elapsedMs": 12550,
+      "elapsedMs": 1474,
       "urlsOnly": true,
       "ticketStatus": 302,
       "mediaStatus": 206,
@@ -27,20 +30,20 @@
     {
       "title": "Bluey S1E1",
       "success": true,
-      "elapsedMs": 12946,
+      "elapsedMs": 3647,
       "streams": [
         {
-          "kind": "torrent",
-          "quality": 1080,
-          "confirmed": true
-        },
-        {
-          "kind": "torrent",
-          "quality": 1080,
-          "confirmed": true
-        },
-        {
           "kind": "directUsenet",
+          "quality": 1080,
+          "confirmed": true
+        },
+        {
+          "kind": "torrent",
+          "quality": 1080,
+          "confirmed": true
+        },
+        {
+          "kind": "torrent",
           "quality": 1080,
           "confirmed": true
         }
@@ -51,37 +54,8 @@
     {
       "title": "Turning Red",
       "success": true,
-      "elapsedMs": 7661,
+      "elapsedMs": 2596,
       "streams": [
-        {
-          "kind": "website",
-          "quality": 1080,
-          "confirmed": true
-        },
-        {
-          "kind": "website",
-          "quality": 480,
-          "confirmed": true
-        },
-        {
-          "kind": "website",
-          "quality": 0,
-          "confirmed": true
-        }
-      ],
-      "sorted": true,
-      "uniqueUrls": true
-    },
-    {
-      "title": "Despicable Me 4",
-      "success": true,
-      "elapsedMs": 10172,
-      "streams": [
-        {
-          "kind": "directUsenet",
-          "quality": 1080,
-          "confirmed": true
-        },
         {
           "kind": "website",
           "quality": 1080,
@@ -102,12 +76,278 @@
       "uniqueUrls": true
     }
   ],
-  "limits": "Source lookup, SDK link conversion, ordering, deduplication and brief ranged media-header checks. No full playback test for the combined provider. Website Romanian declarations are separate from audio metadata.",
-  "sha256": "0a4e7e66e280107404923757d2c563a8e49f218efff2a2270e63b51c65a2e84a",
-  "updatedAt": "2026-10-21T09:21:33.881Z",
-  "automaticPrefill": {
-    "policyTests": "passed: active-profile isolation, explicit primary-addon inheritance, ambiguity rejection, removed-connection rejection, legacy format, corruption handling, read-only access",
-    "androidTV": "passed with AndroidX Preferences-format fixture",
-    "realInstalledSettingsRead": "Not available through the isolated release app debugger; current Nuvio source and official AndroidX schema used"
-  }
+  "benchmark": {
+    "scope": "Fresh addon instances on the same PC; exact source lookup and bounded headers only. Each title is also reopened on the same instance. Upstreams can vary.",
+    "before": [
+      {
+        "title": "Bluey S1E1",
+        "pass": "fresh",
+        "status": 200,
+        "elapsedMs": 22685,
+        "streams": [
+          {
+            "name": "RoDub Instant · 1080p",
+            "confidence": "confirmed"
+          },
+          {
+            "name": "RoDub Instant · 1080p",
+            "confidence": "confirmed"
+          },
+          {
+            "name": "RoDub Instant · 1080p · Usenet Direct",
+            "confidence": "confirmed"
+          }
+        ]
+      },
+      {
+        "title": "Bluey S1E1",
+        "pass": "reopen",
+        "status": 200,
+        "elapsedMs": 14237,
+        "streams": [
+          {
+            "name": "RoDub Instant · 1080p",
+            "confidence": "confirmed"
+          },
+          {
+            "name": "RoDub Instant · 1080p",
+            "confidence": "confirmed"
+          },
+          {
+            "name": "RoDub Instant · 1080p · Usenet Direct",
+            "confidence": "confirmed"
+          }
+        ]
+      },
+      {
+        "title": "Turning Red",
+        "pass": "fresh",
+        "status": 200,
+        "elapsedMs": 23645,
+        "streams": [
+          {
+            "name": "RoDub Instant · 1080p",
+            "confidence": "confirmed"
+          }
+        ]
+      },
+      {
+        "title": "Turning Red",
+        "pass": "reopen",
+        "status": 200,
+        "elapsedMs": 15444,
+        "streams": [
+          {
+            "name": "RoDub Instant · 1080p",
+            "confidence": "confirmed"
+          }
+        ]
+      },
+      {
+        "title": "Babysitter",
+        "pass": "fresh",
+        "status": 200,
+        "elapsedMs": 7462,
+        "streams": [
+          {
+            "name": "RoDub Instant · 1080p · Usenet Direct",
+            "confidence": "confirmed"
+          }
+        ]
+      },
+      {
+        "title": "Babysitter",
+        "pass": "reopen",
+        "status": 200,
+        "elapsedMs": 2905,
+        "streams": [
+          {
+            "name": "RoDub Instant · 1080p · Usenet Direct",
+            "confidence": "confirmed"
+          }
+        ]
+      },
+      {
+        "title": "Camp Cretaceous S2E2",
+        "pass": "fresh",
+        "status": 200,
+        "elapsedMs": 19921,
+        "streams": [
+          {
+            "name": "RoDub Instant · 1080p · Usenet",
+            "confidence": "confirmed"
+          },
+          {
+            "name": "RoDub Instant · 1080p",
+            "confidence": "unconfirmed"
+          },
+          {
+            "name": "RoDub Instant · 1080p",
+            "confidence": "unconfirmed"
+          }
+        ]
+      },
+      {
+        "title": "Camp Cretaceous S2E2",
+        "pass": "reopen",
+        "status": 200,
+        "elapsedMs": 7583,
+        "streams": [
+          {
+            "name": "RoDub Instant · 1080p · Usenet",
+            "confidence": "confirmed"
+          },
+          {
+            "name": "RoDub Instant · 1080p",
+            "confidence": "unconfirmed"
+          },
+          {
+            "name": "RoDub Instant · 1080p",
+            "confidence": "unconfirmed"
+          }
+        ]
+      }
+    ],
+    "after": [
+      {
+        "title": "Bluey S1E1",
+        "pass": "fresh",
+        "status": 200,
+        "elapsedMs": 4506,
+        "streams": [
+          {
+            "name": "RoDub Instant · 1080p",
+            "confidence": "confirmed"
+          },
+          {
+            "name": "RoDub Instant · 1080p · Usenet Direct",
+            "confidence": "confirmed"
+          },
+          {
+            "name": "RoDub Instant · 1080p",
+            "confidence": "confirmed"
+          }
+        ]
+      },
+      {
+        "title": "Bluey S1E1",
+        "pass": "reopen",
+        "status": 200,
+        "elapsedMs": 1246,
+        "streams": [
+          {
+            "name": "RoDub Instant · 1080p · Usenet Direct",
+            "confidence": "confirmed"
+          },
+          {
+            "name": "RoDub Instant · 1080p",
+            "confidence": "confirmed"
+          },
+          {
+            "name": "RoDub Instant · 1080p",
+            "confidence": "confirmed"
+          }
+        ]
+      },
+      {
+        "title": "Turning Red",
+        "pass": "fresh",
+        "status": 200,
+        "elapsedMs": 4304,
+        "streams": [
+          {
+            "name": "RoDub Instant · 1080p",
+            "confidence": "confirmed"
+          }
+        ]
+      },
+      {
+        "title": "Turning Red",
+        "pass": "reopen",
+        "status": 200,
+        "elapsedMs": 2051,
+        "streams": [
+          {
+            "name": "RoDub Instant · 1080p",
+            "confidence": "confirmed"
+          }
+        ]
+      },
+      {
+        "title": "Babysitter",
+        "pass": "fresh",
+        "status": 200,
+        "elapsedMs": 3546,
+        "streams": [
+          {
+            "name": "RoDub Instant · 1080p · Usenet Direct",
+            "confidence": "confirmed"
+          }
+        ]
+      },
+      {
+        "title": "Babysitter",
+        "pass": "reopen",
+        "status": 200,
+        "elapsedMs": 1282,
+        "streams": [
+          {
+            "name": "RoDub Instant · 1080p · Usenet Direct",
+            "confidence": "confirmed"
+          }
+        ]
+      },
+      {
+        "title": "Camp Cretaceous S2E2",
+        "pass": "fresh",
+        "status": 200,
+        "elapsedMs": 3673,
+        "streams": [
+          {
+            "name": "RoDub Instant · 1080p · Usenet",
+            "confidence": "confirmed"
+          },
+          {
+            "name": "RoDub Instant · 1080p",
+            "confidence": "unconfirmed"
+          }
+        ]
+      },
+      {
+        "title": "Camp Cretaceous S2E2",
+        "pass": "reopen",
+        "status": 200,
+        "elapsedMs": 2101,
+        "streams": [
+          {
+            "name": "RoDub Instant · 1080p · Usenet",
+            "confidence": "confirmed"
+          },
+          {
+            "name": "RoDub Instant · 1080p",
+            "confidence": "unconfirmed"
+          }
+        ]
+      }
+    ]
+  },
+  "persistentCache": {
+    "survivesServiceRestart": true,
+    "unauthorizedStatus": 401,
+    "adminStatus": 404,
+    "permissions": "600",
+    "credentialsOrPlaybackUrlsStored": false
+  },
+  "mp4": {
+    "realRomanianAudioConfirmed": true,
+    "metadataCapBytes": 4194304,
+    "subtitleOnlyRomanianExcluded": true
+  },
+  "limits": [
+    "Source/header and seek checks, no full playback",
+    "Two-second native and 1.2-second hosted grace windows can omit slower or higher-quality alternatives",
+    "MP4 needs usable audio-language metadata within bounded reads; AVI audio inspection remains unsupported",
+    "Small benchmark sample; upstreams and device performance vary",
+    "No catalog or TMDB-list changes"
+  ]
 }
