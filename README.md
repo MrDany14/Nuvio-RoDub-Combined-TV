@@ -8,7 +8,9 @@ Add this repository URL in Nuvio TV's plugin repositories:
 
 https://raw.githubusercontent.com/MrDany14/Nuvio-RoDub-Combined-TV/main/repo.json
 
-Install **RoDub Combined [TV Test]**. Open a title or press the plugin's Test button to open private setup. Paste your existing private **RoDub Instant manifest.json installer URL**, save the connection, then close and reopen the title. Use your phone's Android TV remote keyboard if convenient.
+Install or update **RoDub Combined [TV Test]** to version 2. Keep RoDub Instant installed in the same Nuvio profile, then open a title or press the plugin's Test button. The connection is filled in automatically: just press **OK**, then reopen the title. You can disable the separate RoDub Instant provider after connecting.
+
+The plugin reads only the current profile's saved addon URLs (or the primary profile when that profile explicitly shares its addons). It does not edit Nuvio's settings or choose between multiple private connections. If no unique saved connection is available, manual entry remains possible.
 
 The private connection is encrypted with Android Keystore on that TV. It is never included in this public repository or plugin package. No TorBox/NZBGeek/NNTP keys need to be entered into this plugin. The private hosted addon must support `/tvstream` (v0.5.0 or later).
 

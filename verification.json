@@ -1,6 +1,6 @@
 {
   "verifiedAt": "2026-10-21T09:09:09.562Z",
-  "pluginVersion": 1,
+  "pluginVersion": 2,
   "hostedVersion": "0.5.0",
   "unitTestsPassed": 24,
   "nativePolicyTests": "passed",
@@ -103,5 +103,11 @@
     }
   ],
   "limits": "Source lookup, SDK link conversion, ordering, deduplication and brief ranged media-header checks. No full playback test for the combined provider. Website Romanian declarations are separate from audio metadata.",
-  "sha256": "ab9ada12579b1008d75d914317ba0d5215dd981f9ec32d7c2ea091d4c64b04ac"
+  "sha256": "0a4e7e66e280107404923757d2c563a8e49f218efff2a2270e63b51c65a2e84a",
+  "updatedAt": "2026-10-21T09:21:33.881Z",
+  "automaticPrefill": {
+    "policyTests": "passed: active-profile isolation, explicit primary-addon inheritance, ambiguity rejection, removed-connection rejection, legacy format, corruption handling, read-only access",
+    "androidTV": "passed with AndroidX Preferences-format fixture",
+    "realInstalledSettingsRead": "Not available through the isolated release app debugger; current Nuvio source and official AndroidX schema used"
+  }
 }

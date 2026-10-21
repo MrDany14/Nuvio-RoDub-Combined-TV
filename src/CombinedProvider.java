@@ -13,7 +13,7 @@ public final class CombinedProvider extends TmdbProvider {
  public Object loadLinks(final String data,final boolean casting,final Function1 subtitle,Function1 callback,final Continuation continuation){
   String saved="";try{if(CombinedPlugin.app!=null)saved=new CombinedStore(CombinedPlugin.app).read();}catch(Exception e){/* Device keystore unavailable: website lookup still works. */}
   boolean diagnostic=false;try{diagnostic=!new org.json.JSONObject(data).has("originalTitle");}catch(Exception e){}
-  if(saved.isEmpty()||diagnostic)CombinedSetup.show();return lookup(data,casting,subtitle,callback,continuation,saved);
+  if(saved.isEmpty()||diagnostic){String prefill=saved;if(prefill.isEmpty()&&CombinedPlugin.app!=null)prefill=SavedConnection.find(CombinedPlugin.app.getFilesDir());CombinedSetup.show(prefill);}return lookup(data,casting,subtitle,callback,continuation,saved);
  }
  Object lookup(final String data,final boolean casting,final Function1 subtitle,Function1 callback,final Continuation continuation,final String manifest){
   final List<CombinedStream> results=Collections.synchronizedList(new ArrayList<CombinedStream>());
