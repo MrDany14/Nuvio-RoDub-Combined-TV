@@ -8,7 +8,7 @@ Add this repository URL in Nuvio TV's plugin repositories:
 
 https://raw.githubusercontent.com/MrDany14/Nuvio-RoDub-Combined-TV/main/repo.json
 
-Install or update **RoDub Combined [TV Test]** to version 2. Keep RoDub Instant installed in the same Nuvio profile, then open a title or press the plugin's Test button. The connection is filled in automatically: just press **OK**, then reopen the title. You can disable the separate RoDub Instant provider after connecting.
+Install or update **RoDub Combined [TV Test]** to version 3. Existing connections remain stored. For a new connection, keep RoDub Instant installed in the same Nuvio profile, then open a title or press the plugin's Test button. The connection is filled in automatically: just press **OK**, then reopen the title. You can disable the separate RoDub Instant provider after connecting.
 
 The plugin reads only the current profile's saved addon URLs (or the primary profile when that profile explicitly shares its addons). It does not edit Nuvio's settings or choose between multiple private connections. If no unique saved connection is available, manual entry remains possible.
 
@@ -22,6 +22,8 @@ Both branches run concurrently:
 
 - Website searches/resolvers run on the TV's own Internet connection: DeseneFaine, DozaAnimata, FilmeDublate, DeseneleDublate and DesenFlix.
 - Cached torrents, cached Usenet and direct Usenet come from the private hosted addon. Direct Usenet video is delivered by the existing HTTPS bridge.
+
+Version 3 starts a two-second collection window when the first confirmed source arrives, then cancels unfinished work and sorts the collected sources. Website declarations and positive audio metadata qualify; unconfirmed guesses alone do not shorten the search. If neither branch confirms a source, the original 40-second ceiling remains. This favors fast usable results over waiting for every alternative; a slower or higher-resolution source may be omitted. Backend v0.8.0 uses a similar 1.2-second window, a private persistent metadata/audio cache, and bounded MP4 audio inspection. The original standalone RoDubbed plugin and TMDB/catalog lists are unchanged.
 
 Results are ordered by Romanian confidence first, then resolution (highest first), then release quality when known. Exact duplicate URLs and known duplicate file identities are removed. Different usable hosts/transports remain available as alternatives. No artificial resolution is assigned to force a sort.
 

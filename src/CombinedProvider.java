@@ -17,17 +17,18 @@ public final class CombinedProvider extends TmdbProvider {
  }
  Object lookup(final String data,final boolean casting,final Function1 subtitle,Function1 callback,final Continuation continuation,final String manifest){
   final List<CombinedStream> results=Collections.synchronizedList(new ArrayList<CombinedStream>());
+  final boolean[] accepting={true};
   ExecutorService workers=Executors.newFixedThreadPool(2,r->{Thread t=new Thread(r,"RoDub-combined");t.setDaemon(true);return t;});
-  Future<?> web=workers.submit(()->new RoDubbedProvider().loadLinks(data,casting,subtitle,new Function1(){public Object invoke(Object value){if(value instanceof CombinedStream)results.add((CombinedStream)value);return null;}},continuation));
+  Future<?> web=workers.submit(()->new RoDubbedProvider().loadLinks(data,casting,subtitle,new Function1(){public Object invoke(Object value){if(value instanceof CombinedStream)synchronized(results){if(accepting[0]){results.add((CombinedStream)value);results.notifyAll();}}return null;}},continuation));
   final NativeHttp.Session remoteSession=new NativeHttp.Session(31000);
-  Future<?> hosted=workers.submit(()->{if(manifest.isEmpty())return;NativeHttp.CURRENT.set(remoteSession);try{results.addAll(CombinedRemote.streams(manifest,data));}catch(Exception e){System.out.println("[RoDub Combined] hosted lookup unavailable");}finally{remoteSession.stop();NativeHttp.CURRENT.remove();}});
-  long end=System.nanoTime()+TimeUnit.SECONDS.toNanos(40);int count=0;
+  Future<?> hosted=workers.submit(()->{if(manifest.isEmpty())return;NativeHttp.CURRENT.set(remoteSession);try{List<CombinedStream> found=CombinedRemote.streams(manifest,data);synchronized(results){if(accepting[0]){results.addAll(found);results.notifyAll();}}}catch(Exception e){System.out.println("[RoDub Combined] hosted lookup unavailable");}finally{remoteSession.stop();NativeHttp.CURRENT.remove();synchronized(results){results.notifyAll();}}});
+  int count=0;
   try{
-   for(Future<?> f:Arrays.asList(web,hosted)){long remaining=end-System.nanoTime();if(remaining<=0)break;try{f.get(remaining,TimeUnit.NANOSECONDS);}catch(ExecutionException e){/* Keep the other branch. */}catch(TimeoutException e){break;}}
-   List<CombinedStream> snapshot; synchronized(results){snapshot=new ArrayList<>(results);}
+   CombinedWait.await(results,Arrays.asList(web,hosted),40000,2000);
+   List<CombinedStream> snapshot; synchronized(results){accepting[0]=false;snapshot=new ArrayList<>(results);}
    for(CombinedStream stream:CombinedStream.ordered(snapshot)){callback.invoke(stream.link());count++;}
   }catch(InterruptedException e){Thread.currentThread().interrupt();}catch(Exception e){System.out.println("[RoDub Combined] output stopped");}
-  finally{remoteSession.stop();web.cancel(true);hosted.cancel(true);workers.shutdownNow();}
+  finally{synchronized(results){accepting[0]=false;}remoteSession.stop();web.cancel(true);hosted.cancel(true);workers.shutdownNow();}
   System.out.println("[RoDub Combined] streams="+count);return count>0;
  }
 }

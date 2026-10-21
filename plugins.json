@@ -3,7 +3,7 @@
     "name": "RoDub Combined [TV Test]",
     "internalName": "RoDubCombinedTV",
     "description": "Website sources run locally on your TV. TorBox and Usenet run through your private RoDub Instant connection. Confirmed Romanian first, then possible Romanian; quality within each group.",
-    "version": 2,
+    "version": 3,
     "apiVersion": 1,
     "status": 1,
     "authors": [
@@ -15,6 +15,6 @@
     ],
     "url": "https://raw.githubusercontent.com/MrDany14/Nuvio-RoDub-Combined-TV/main/RoDubCombinedTV.cs3",
     "repositoryUrl": "https://github.com/MrDany14/Nuvio-RoDub-Combined-TV",
-    "fileSize": 65238
+    "fileSize": 65756
   }
 ]
