@@ -90,6 +90,6 @@ public final class RoDubbedProvider extends TmdbProvider {
     }
     static Object makeLink(ResolvedStream stream)throws Exception{
         Map<String,String> headers=stream.playbackHeaders!=null?new HashMap<>(stream.playbackHeaders):stream.host.equals("Abyss")?AbyssClient.mediaHeaders(stream.referer):NativeHttp.headers(stream.referer);if(!headers.containsKey("User-Agent"))headers.put("User-Agent",ByseClient.USER_AGENT);
-        return new CombinedStream(stream.host+" | RO Dub (website) | "+stream.site,stream.url,stream.referer,stream.quality,0,true,stream.isHls,headers,"web:"+stream.identity);
+        return new CombinedStream(CleanLabels.website(stream.host,stream.site,stream.quality),stream.url,stream.referer,stream.quality,0,true,stream.isHls,headers,"web:"+stream.identity);
     }
 }

@@ -31,8 +31,9 @@ final class CombinedRemote {
    String title=s.optString("title",""),name=s.optString("name","");boolean confirmed="confirmed".equals(s.optString("roConfidence"))&&title.startsWith("RO Dub (audio metadata)");
    String transport=name.contains("Usenet Direct")?"Usenet Direct":name.contains("Usenet")?"Usenet cached":"TorBox cached";
    String filename=title.contains("\n")?title.substring(title.indexOf('\n')+1):"";
-   int quality=s.optInt("resolution",0);String label=(quality>0?quality+"p | ":"")+transport+" | "+(confirmed?"RO Dub (audio metadata)":"Possible RO Dub");if(!filename.isEmpty())label+="\n"+filename;
-   JSONObject hints=s.optJSONObject("behaviorHints");String identity=hints==null?null:hints.optString("filename","");if(identity!=null&&!identity.isEmpty())identity="hosted:"+transport+":"+identity+":"+hints.optLong("videoSize",0);else identity=null;
+   int quality=s.optInt("resolution",0);JSONObject hints=s.optJSONObject("behaviorHints");String identity=hints==null?null:hints.optString("filename","");
+   String label=CleanLabels.hosted(quality,transport,confirmed,identity==null||identity.isEmpty()?filename:identity,hints==null?0:hints.optLong("videoSize",0));
+   if(identity!=null&&!identity.isEmpty())identity="hosted:"+transport+":"+identity+":"+hints.optLong("videoSize",0);else identity=null;
    result.add(new CombinedStream(label,url,"",quality,s.optInt("releaseQuality",0),confirmed,false,Collections.<String,String>emptyMap(),identity));
   }return result;
  }

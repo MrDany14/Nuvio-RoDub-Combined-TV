@@ -8,7 +8,7 @@ Add this repository URL in Nuvio TV's plugin repositories:
 
 https://raw.githubusercontent.com/MrDany14/Nuvio-RoDub-Combined-TV/main/repo.json
 
-Install or update **RoDub Combined [TV Test]** to version 3. Existing connections remain stored. For a new connection, keep RoDub Instant installed in the same Nuvio profile, then open a title or press the plugin's Test button. The connection is filled in automatically: just press **OK**, then reopen the title. You can disable the separate RoDub Instant provider after connecting.
+Install or update **RoDub Combined [TV Test]** to version 4. Existing connections remain stored. For a new connection, keep RoDub Instant installed in the same Nuvio profile, then open a title or press the plugin's Test button. The connection is filled in automatically: just press **OK**, then reopen the title. You can disable the separate RoDub Instant provider after connecting.
 
 The plugin reads only the current profile's saved addon URLs (or the primary profile when that profile explicitly shares its addons). It does not edit Nuvio's settings or choose between multiple private connections. If no unique saved connection is available, manual entry remains possible.
 
@@ -17,6 +17,16 @@ The private connection is encrypted with Android Keystore on that TV. It is neve
 Select this provider's tab to see the combined order. Disable the separate RoDubbed, TorBox Finder and RoDub Instant providers when you want one list without their duplicate entries. Existing installations and catalogs are not changed by this plugin.
 
 ## Results and ordering
+
+Version 4 applies the approved Clean labels inside Nuvio's existing cards. The first line shows resolution and provider; the second distinguishes verified Romanian audio, a website's Romanian declaration, and possible/unverified dubbing. The third shows cached/direct delivery, container and file size when those facts are available, or the publisher website for web sources. Sizes use decimal KB/MB/GB. Release filenames are hidden from the label but remain available internally for exact-file playback and deduplication. Missing size, container or resolution is omitted rather than guessed. Nuvio continues to control card colors, focus and typography.
+
+Example hosted label:
+
+```text
+1080p · TorBox
+Romanian audio verified
+Cached · MKV · 484 MB
+```
 
 Both branches run concurrently:
 

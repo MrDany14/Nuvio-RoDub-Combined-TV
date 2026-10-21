@@ -14,9 +14,13 @@ public final class CombinedPolicyTest {
   rows.put(new JSONObject().put("title","Possible RO Dub").put("resolution",2160).put("url",root+"torrentplay/ticket"));
   rows.put(new JSONObject().put("url","https://127.0.0.1/media/a"));
   rows.put(new JSONObject().put("url","https://rodub-instant-test.vercel.app.evil.invalid/play/ticket"));
-  List<CombinedStream> parsed=CombinedRemote.parseStreams(new JSONObject().put("streams",rows),root);check(parsed.size()==2&&parsed.get(0).confirmed&&!parsed.get(1).confirmed);check(parsed.get(0).name.contains("Usenet cached"));
+  List<CombinedStream> parsed=CombinedRemote.parseStreams(new JSONObject().put("streams",rows),root);check(parsed.size()==2&&parsed.get(0).confirmed&&!parsed.get(1).confirmed);check(parsed.get(0).name.equals("1080p · Usenet\nRomanian audio verified\nCached"));
+  check(parsed.get(1).name.equals("2160p · TorBox\nPossible Romanian dub\nUnverified · Cached"));
+  check(CleanLabels.website("Byse","DesenFlix",1080).equals("1080p · Byse\nRomanian · website label\nDesenFlix"));
+  check(!CleanLabels.website("Byse","DesenFlix",0).contains("0p"));
+  String clean=CleanLabels.hosted(1080,"TorBox cached",true,"private-release-name.mkv",484152602);check(clean.endsWith("Cached · MKV · 484 MB")&&!clean.contains("private-release-name"));
   JSONObject metadata=new JSONObject().put("name","Bluey").put("original_name","Bluey").put("first_air_date","2018-10-01").put("external_ids",new JSONObject().put("imdb_id","tt7678620"));
   check(NativeMetadata.link(82728,metadata,true).getString("imdbID").equals("tt7678620"));
-  System.out.println("COMBINED_POLICY_OK confidence_quality_dedupe_headers_identity_configuration");
+  System.out.println("COMBINED_POLICY_OK clean_labels_confidence_quality_dedupe_headers_identity_configuration");
  }
 }

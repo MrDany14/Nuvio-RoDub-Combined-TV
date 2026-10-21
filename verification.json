@@ -1,49 +1,36 @@
 {
-  "verifiedAt": "2026-10-21T10:51:27.242Z",
-  "pluginVersion": 3,
+  "verifiedAt": "2026-10-21T11:06:51.411Z",
+  "pluginVersion": 4,
   "hostedVersion": "0.8.0",
   "nodeTestsPassed": 46,
   "nativePolicyTests": "passed",
   "nativeWaitTests": "passed",
-  "packageBytes": 65756,
-  "packageSha256": "9cfd7db8e8036f644c51a5c072c32a41705fa4342e944ca148a1a4b381cfa55e",
+  "packageBytes": 66500,
+  "packageSha256": "ada24f0f71c773d06bc1ce1537ef9fe16ca17920e9b8e70d2094e17f5f9bf58c",
   "backend": [
     {
       "endpoint": "stream",
       "status": 200,
-      "count": 3,
-      "elapsedMs": 4073
+      "count": 1,
+      "elapsedMs": 3188
     },
     {
       "endpoint": "tvstream",
       "status": 200,
-      "count": 3,
-      "elapsedMs": 1474,
-      "urlsOnly": true,
-      "ticketStatus": 302,
-      "mediaStatus": 206,
-      "validMedia": true,
-      "tamperedStatus": 410
+      "count": 1,
+      "elapsedMs": 1460,
+      "urlsOnly": true
     }
   ],
   "androidTV": [
     {
       "title": "Bluey S1E1",
       "success": true,
-      "elapsedMs": 3647,
+      "elapsedMs": 3381,
       "streams": [
         {
           "kind": "directUsenet",
-          "quality": 1080,
-          "confirmed": true
-        },
-        {
-          "kind": "torrent",
-          "quality": 1080,
-          "confirmed": true
-        },
-        {
-          "kind": "torrent",
+          "label": "1080p · Usenet\nRomanian audio verified\nDirect streaming · 484 MB",
           "quality": 1080,
           "confirmed": true
         }
@@ -54,20 +41,17 @@
     {
       "title": "Turning Red",
       "success": true,
-      "elapsedMs": 2596,
+      "elapsedMs": 2521,
       "streams": [
         {
           "kind": "website",
+          "label": "1080p · Byse\nRomanian · website label\nFilmeDublate",
           "quality": 1080,
           "confirmed": true
         },
         {
           "kind": "website",
-          "quality": 720,
-          "confirmed": true
-        },
-        {
-          "kind": "website",
+          "label": "Streamtape\nRomanian · website label\nFilmeDublate",
           "quality": 0,
           "confirmed": true
         }
@@ -349,5 +333,54 @@
     "MP4 needs usable audio-language metadata within bounded reads; AVI audio inspection remains unsupported",
     "Small benchmark sample; upstreams and device performance vary",
     "No catalog or TMDB-list changes"
-  ]
+  ],
+  "cleanLabels": {
+    "status": "verified",
+    "threeLineLayout": true,
+    "filenamesHidden": true,
+    "missingMetadataOmitted": true,
+    "decimalSizeUnits": true,
+    "hostedBackendUnchanged": "0.8.0",
+    "mediaChecks": [
+      {
+        "title": "A Babysitter’s Guide to Monster Hunting",
+        "status": 200,
+        "elapsedMs": 3753,
+        "streams": [
+          {
+            "name": "RoDub Instant · 1080p · Usenet Direct",
+            "confidence": "confirmed"
+          }
+        ],
+        "error": null,
+        "media": {
+          "status": 206,
+          "validHeader": true
+        }
+      },
+      {
+        "title": "Bluey S1E1",
+        "status": 200,
+        "elapsedMs": 1339,
+        "streams": [
+          {
+            "name": "RoDub Instant · 1080p · Usenet Direct",
+            "confidence": "confirmed"
+          },
+          {
+            "name": "RoDub Instant · 1080p",
+            "confidence": "confirmed"
+          },
+          {
+            "name": "RoDub Instant · 1080p",
+            "confidence": "confirmed"
+          }
+        ],
+        "error": null
+      }
+    ],
+    "nativePolicyTests": "passed",
+    "nativeWaitTests": "passed",
+    "genericProbeNote": "No torrent ticket returned in the initial lookup, so its optional torrent-specific media assertion was not exercised. A separate bounded direct-Usenet header check passed."
+  }
 }
