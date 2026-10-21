@@ -1,0 +1,107 @@
+{
+  "verifiedAt": "2026-10-21T09:09:09.562Z",
+  "pluginVersion": 1,
+  "hostedVersion": "0.5.0",
+  "unitTestsPassed": 24,
+  "nativePolicyTests": "passed",
+  "backend": [
+    {
+      "endpoint": "stream",
+      "status": 200,
+      "count": 3,
+      "elapsedMs": 13535
+    },
+    {
+      "endpoint": "tvstream",
+      "status": 200,
+      "count": 3,
+      "elapsedMs": 12550,
+      "urlsOnly": true,
+      "ticketStatus": 302,
+      "mediaStatus": 206,
+      "validMedia": true,
+      "tamperedStatus": 410
+    }
+  ],
+  "androidTV": [
+    {
+      "title": "Bluey S1E1",
+      "success": true,
+      "elapsedMs": 12946,
+      "streams": [
+        {
+          "kind": "torrent",
+          "quality": 1080,
+          "confirmed": true
+        },
+        {
+          "kind": "torrent",
+          "quality": 1080,
+          "confirmed": true
+        },
+        {
+          "kind": "directUsenet",
+          "quality": 1080,
+          "confirmed": true
+        }
+      ],
+      "sorted": true,
+      "uniqueUrls": true
+    },
+    {
+      "title": "Turning Red",
+      "success": true,
+      "elapsedMs": 7661,
+      "streams": [
+        {
+          "kind": "website",
+          "quality": 1080,
+          "confirmed": true
+        },
+        {
+          "kind": "website",
+          "quality": 480,
+          "confirmed": true
+        },
+        {
+          "kind": "website",
+          "quality": 0,
+          "confirmed": true
+        }
+      ],
+      "sorted": true,
+      "uniqueUrls": true
+    },
+    {
+      "title": "Despicable Me 4",
+      "success": true,
+      "elapsedMs": 10172,
+      "streams": [
+        {
+          "kind": "directUsenet",
+          "quality": 1080,
+          "confirmed": true
+        },
+        {
+          "kind": "website",
+          "quality": 1080,
+          "confirmed": true
+        },
+        {
+          "kind": "website",
+          "quality": 720,
+          "confirmed": true
+        },
+        {
+          "kind": "website",
+          "quality": 0,
+          "confirmed": true
+        }
+      ],
+      "sorted": true,
+      "uniqueUrls": true
+    }
+  ],
+  "limits": "Source lookup, SDK link conversion, ordering, deduplication and brief ranged media-header checks. No full playback test for the combined provider. Website Romanian declarations are separate from audio metadata.",
+  "sha256": "ab9ada12579b1008d75d914317ba0d5215dd981f9ec32d7c2ea091d4c64b04ac"
+}

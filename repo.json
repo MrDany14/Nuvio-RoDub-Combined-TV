@@ -1,0 +1,6 @@
+{
+  "name": "RoDub Combined TV",
+  "description": "Local Romanian website sources plus hosted TorBox and Usenet, combined and sorted on Nuvio TV.",
+  "manifestVersion": 1,
+  "pluginLists": ["https://raw.githubusercontent.com/MrDany14/Nuvio-RoDub-Combined-TV/main/plugins.json"]
+}
